@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { http } from 'utils/httpClient';
 import loaderSvg from 'assets/svg/loader.svg';
+import Post from 'components/molecules/Post';
+import { formatDate } from '../utils/formatDate';
 
 const Article = ({ match }) => {
   const [fetching, setFetching] = useState();
@@ -26,18 +28,15 @@ const Article = ({ match }) => {
   if (fetching) {
     return <img src={loaderSvg} alt="loading" />;
   } else {
-    const { title, posted, fullContent } = postData;
-    console.log(title, posted, fullContent);
-
-    // let postedDate = posted && posted.substring(0, 10);
-    console.log(posted && posted.substring(0, 10));
+    const { _id, title, posted, fullContent } = postData;
 
     return (
-      <>
-        <div>{title}</div>
-        <div>{posted}</div>
-        <div>{fullContent}</div>
-      </>
+      <Post
+        id={_id}
+        title={title}
+        posted={formatDate(posted)}
+        fullContent={fullContent}
+      />
     );
   }
 };

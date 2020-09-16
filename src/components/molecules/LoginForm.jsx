@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button';
-import { FormProvider as DataForm, FormContext } from 'contexts/FormContext';
+import { FormProvider, FormContext } from 'contexts/FormContext';
 import { PopupContext } from 'contexts/PopupContext';
 import { UserContext } from 'contexts/UserContext';
 import { http } from 'utils/httpClient';
@@ -9,6 +9,7 @@ import { http } from 'utils/httpClient';
 const LoginForm = () => {
   const { setUserData } = useContext(UserContext);
   const { addPopup } = useContext(PopupContext);
+
   const [logging, setLogging] = useState(false);
 
   const onSubmit = async inputs => {
@@ -34,7 +35,7 @@ const LoginForm = () => {
   };
 
   return (
-    <DataForm onSubmit={onSubmit}>
+    <FormProvider onSubmit={onSubmit}>
       <Input context={FormContext} name="username" placeholder="username" />
       <Input
         context={FormContext}
@@ -45,7 +46,7 @@ const LoginForm = () => {
       <Button type="submit" disabled={logging}>
         {logging ? 'Logging' : 'Sign in'}
       </Button>
-    </DataForm>
+    </FormProvider>
   );
 };
 

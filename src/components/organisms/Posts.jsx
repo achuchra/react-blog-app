@@ -3,6 +3,7 @@ import GridTemplate from 'templates/GridTemplate';
 import { http } from 'utils/httpClient';
 import Post from 'components/molecules/Post';
 import loaderSvg from 'assets/svg/loader.svg';
+import { formatDate } from 'utils/formatDate';
 
 const Posts = () => {
   const [fetching, setFetching] = useState();
@@ -44,7 +45,7 @@ const Posts = () => {
             key={_id}
             id={_id}
             title={title}
-            posted={`${new Date(posted).getFullYear()}`}
+            posted={formatDate(posted)}
             author={author}
             shortContent={shortContent}
             fullContent={fullContent}

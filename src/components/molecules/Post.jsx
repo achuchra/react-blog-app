@@ -9,6 +9,22 @@ const StyledPost = styled.div`
   box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.grey200};
   border-radius: 25px;
   padding: 15px;
+  position: relative;
+
+  span {
+    color: ${({ theme }) => theme.grey300};
+    position: absolute;
+    right: 25px;
+    top: 0;
+    transform: translateY(-40%);
+    font-size: ${({ theme }) => theme.fontSize.xs};
+    background: ${({ theme }) => theme.white};
+    padding: 0 10px;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
 `;
 
 const Post = ({ id, title, posted, shortContent, fullContent, preview }) => {

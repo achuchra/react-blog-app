@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { UserProvider } from 'contexts/UserContext';
+import { BrowserRouter as Router } from 'react-router-dom';
+import GlobalStyle from 'themes/GlobalStyle';
+import BasicTemplate from 'templates/BasicTemplate';
+import Routing from 'routes/Routing';
+import { PopupProvider } from 'contexts/PopupContext';
+import PopupList from 'components/molecules/Popup';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <UserProvider>
+        <PopupProvider>
+          <Router>
+            <BasicTemplate>
+              <Routing />
+              <PopupList />
+            </BasicTemplate>
+          </Router>
+        </PopupProvider>
+      </UserProvider>
+    </>
   );
-}
+};
 
 export default App;

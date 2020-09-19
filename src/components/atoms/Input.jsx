@@ -22,10 +22,14 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledTextArea = styled.textarea`
-  ${inputStyle}
+  ${inputStyle};
+  border-radius: 10px;
+  min-height: 70px;
+  width: 100%;
+  max-width: 100%;
 `;
 
-const Input = ({ context, name, type, placeholder, kind, initValue }) => {
+const Input = ({ context, name, type, placeholder, area, initValue }) => {
   const { setInputsValue } = useContext(context);
   const [value, setValue] = useState(initValue || '');
 
@@ -33,10 +37,11 @@ const Input = ({ context, name, type, placeholder, kind, initValue }) => {
     setInputsValue({ name, value });
   }, [value]);
 
-  if (kind) {
+  if (area) {
     return (
       <StyledTextArea
         defaultValue={value}
+        placeholder={placeholder}
         onChange={e => setValue(e.target.value)}
         name={name}
       ></StyledTextArea>

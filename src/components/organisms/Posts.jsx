@@ -15,6 +15,7 @@ const Posts = () => {
       const res = await http.getPosts();
 
       if (res) {
+        console.log(res);
         setPostsData(state => ({
           ...state,
           ...res,

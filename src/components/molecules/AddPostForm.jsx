@@ -69,6 +69,7 @@ const AddPostForm = ({ isVisible, toggleClose }) => {
       const res = await http.addPost(inputs);
       if (res) {
         setFetching('fetched');
+        toggleClose();
       }
     } catch (err) {
       setFetching('error');
@@ -82,16 +83,16 @@ const AddPostForm = ({ isVisible, toggleClose }) => {
         <Heading>Add a new post</Heading>
         <Input context={FormContext} name="title" placeholder="title" />
         <Input
-          kind
+          area
           context={FormContext}
           name="shortContent"
-          placeholder="shortContent"
+          placeholder="preview content"
         />
         <Input
-          kind
+          area
           context={FormContext}
           name="fullContent"
-          placeholder="fullContent"
+          placeholder="full content"
         />
         <Input
           context={FormContext}

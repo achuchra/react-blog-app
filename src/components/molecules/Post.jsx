@@ -27,7 +27,24 @@ const StyledPost = styled.div`
   }
 `;
 
-const Post = ({ id, title, posted, shortContent, fullContent, preview }) => {
+const Post = ({
+  id,
+  title,
+  posted,
+  shortContent,
+  fullContent,
+  preview,
+  dashboard,
+}) => {
+  if (dashboard) {
+    return (
+      <div>
+        <span>{title}</span>
+        <span>edit</span>
+        <span>delete</span>
+      </div>
+    );
+  }
   return (
     <StyledPost id={id}>
       <Heading>{title}</Heading>

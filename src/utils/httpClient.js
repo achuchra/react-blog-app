@@ -32,6 +32,7 @@ const {
   UPDATE_POST,
   DELETE_POST,
   USER_LOGIN,
+  USER_UPDATE,
   USER_LOGOUT,
   USER_REGISTER,
 } = endpoints;
@@ -43,6 +44,7 @@ export const http = {
   updatePost: (id, body) => httpMiddleware(`${UPDATE_POST}${id}`, 'PUT', body),
   deletePost: id => httpMiddleware(`${DELETE_POST}${id}`, 'DELETE'),
   userLogin: body => httpMiddleware(USER_LOGIN, 'POST', body),
+  userUpdate: (id, body) => httpMiddleware(`${USER_UPDATE}${id}`, 'PUT', body),
   userLogout: () => httpMiddleware(USER_LOGOUT, 'POST'),
   userRegister: body => httpMiddleware(USER_REGISTER, 'POST', body),
 };

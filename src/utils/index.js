@@ -6,6 +6,7 @@ export const endpoints = {
   UPDATE_POST: `${BASE_URL}/posts/`,
   DELETE_POST: `${BASE_URL}/posts/`,
   USER_LOGIN: `${BASE_URL}/user/login`,
+  USER_UPDATE: `${BASE_URL}/user/update/`,
   USER_LOGOUT: `${BASE_URL}/user/logout`,
   USER_REGISTER: `${BASE_URL}/user/register`,
 };

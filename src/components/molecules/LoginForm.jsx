@@ -17,12 +17,13 @@ const LoginForm = () => {
     try {
       const res = await http.userLogin(inputs);
       if (res) {
-        const { _id, name, surname } = res;
+        const { _id, username, name, surname } = res;
         setUserData(state => ({
           ...state,
           isLogged: true,
           user: {
             id: _id,
+            username,
             name,
             surname,
           },

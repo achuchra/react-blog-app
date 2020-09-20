@@ -27,18 +27,16 @@ const Article = ({ match }) => {
 
   if (fetching) {
     return <img src={loaderSvg} alt="loading" />;
-  } else {
-    const { _id, title, posted, fullContent } = postData;
-
-    return (
-      <Post
-        id={_id}
-        title={title}
-        posted={formatDate(posted)}
-        fullContent={fullContent}
-      />
-    );
   }
+  const { _id, title, posted, fullContent } = postData;
+  return (
+    <Post
+      id={_id}
+      title={title}
+      posted={formatDate(posted)}
+      fullContent={fullContent}
+    />
+  );
 };
 
 export default Article;

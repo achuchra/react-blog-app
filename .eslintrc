@@ -5,16 +5,19 @@
     "document": true
   },
   "env": {
-    "jest": true
+    "jest": true,
+    "browser": true
   },
   "rules": {
     "import/no-extraneous-dependencies": 0,
     "import/prefer-default-export": 0,
     "import/no-unresolved": 1,
+    "react/prop-types": 0,
+    "no-underscore-dangle": 0,
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js"]
+        "extensions": [".js", ".jsx"]
       }
     ]
   },

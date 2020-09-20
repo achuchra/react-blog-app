@@ -7,7 +7,7 @@ export const PopupProvider = ({ children }) => {
 
   const addPopup = message => {
     setToShow(state => {
-      return [...state, { message: message }];
+      return [...state, { message }];
     });
   };
 

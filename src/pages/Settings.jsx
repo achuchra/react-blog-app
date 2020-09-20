@@ -6,6 +6,7 @@ import { http } from 'utils/httpClient';
 import { PopupContext } from 'contexts/PopupContext';
 import { FormProvider as DataForm, FormContext } from 'contexts/FormContext';
 import Input from 'components/atoms/Input';
+import Heading from 'components/atoms/Heading';
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -55,7 +56,8 @@ const Settings = () => {
   };
 
   return (
-    <div>
+    <>
+      <Heading>Edit your data</Heading>
       <FlexWrapper>
         <p>Hello {userData.user.name}</p>
         <Button type="button" secondary onClick={handleLogOutClick}>
@@ -75,7 +77,7 @@ const Settings = () => {
         />
         <Button type="submit">Update info</Button>
       </DataForm>
-    </div>
+    </>
   );
 };
 

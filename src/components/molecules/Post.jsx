@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Heading from 'components/atoms/Heading';
 import Paragraph from 'components/atoms/Paragraph';
+import pencil from 'assets/svg/pencil.svg';
+import dustbin from 'assets/svg/dustbin.svg';
 
 const StyledPost = styled.div`
   box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.grey200};
@@ -27,6 +29,20 @@ const StyledPost = styled.div`
   }
 `;
 
+const DashboardPost = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+
+    a {
+      display: block;
+      width: 24px;
+    }
+  }
+`
+
 const Post = ({
   id,
   title,
@@ -38,11 +54,15 @@ const Post = ({
 }) => {
   if (dashboard) {
     return (
-      <div>
+      <DashboardPost>
         <span>{title}</span>
-        <span>edit</span>
-        <span>delete</span>
-      </div>
+        <div>
+          <Link to={`/edit/${id}`}>
+            <img src={pencil} alt='edit' />
+          </Link>
+          <img src={dustbin} alt='delete' />
+        </div>
+      </DashboardPost>
     );
   }
   return (

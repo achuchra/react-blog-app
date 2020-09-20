@@ -100,7 +100,7 @@ const AddPostForm = ({ isVisible, toggleClose }) => {
           name="author"
           initValue={userData.user.name}
         />
-        <Button type="submit" disabled={fetching === 'fetching' ? true : false}>
+        <Button type="submit" disabled={fetching === 'fetching'}>
           {fetching === 'fetching' ? 'Adding...' : 'Confirm'}
         </Button>
       </DataForm>

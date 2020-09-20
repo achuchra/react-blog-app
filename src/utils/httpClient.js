@@ -5,7 +5,7 @@ const headers = {
 };
 
 const httpRequest = async (endpoint, method, body, config) => {
-  console.log('endpoint to send to: ' + endpoint);
+  console.log(`endpoint to send to: ${endpoint}`);
   const res = await fetch(endpoint, {
     method,
     body: body ? JSON.stringify(body) : null,
@@ -23,6 +23,7 @@ const httpMiddleware = async (...params) => {
   } catch (err) {
     console.log(err);
   }
+  return false;
 };
 
 const {

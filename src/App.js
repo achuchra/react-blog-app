@@ -8,6 +8,9 @@ import { PopupProvider } from 'contexts/PopupContext';
 import PopupList from 'components/molecules/Popup';
 
 const App = () => {
+  // useEffect(()=> {
+
+  // },[]);
   return (
     <>
       <GlobalStyle />

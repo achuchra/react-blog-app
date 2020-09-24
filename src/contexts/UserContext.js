@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { http } from 'utils/httpClient';
 
 export const UserContext = React.createContext();
 
@@ -9,6 +10,24 @@ const defaultUserData = {
 
 export const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState(defaultUserData);
+
+  useEffect(() => {
+    const getCurrent = async () => {
+      const res = await http.getCurrent();
+      console.log('current');
+      console.log(res);
+
+      if (res.currentUser) {
+        setUserData(state => ({
+          ...state,
+          isLogged: true,
+          user: res.currentUser,
+        }));
+      }
+    };
+
+    getCurrent();
+  }, []);
 
   return (
     <UserContext.Provider

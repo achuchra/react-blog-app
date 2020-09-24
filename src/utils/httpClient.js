@@ -27,6 +27,7 @@ const httpMiddleware = async (...params) => {
 };
 
 const {
+  GET_CURRENT,
   GET_POSTS,
   GET_POST,
   ADD_POST,
@@ -39,6 +40,7 @@ const {
 } = endpoints;
 
 export const http = {
+  getCurrent: () => httpMiddleware(GET_CURRENT, 'GET'),
   getPosts: () => httpMiddleware(GET_POSTS, 'GET'),
   getPost: id => httpMiddleware(GET_POST + id, 'GET'),
   addPost: body => httpMiddleware(ADD_POST, 'POST', body),

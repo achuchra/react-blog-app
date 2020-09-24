@@ -55,6 +55,8 @@ const Settings = () => {
     }
   };
 
+  console.log(userData);
+
   return (
     <>
       <Heading>Edit your data</Heading>

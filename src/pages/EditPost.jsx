@@ -53,21 +53,21 @@ const EditPost = ({ match }) => {
           context={FormContext}
           name="title"
           placeholder={title}
-          initialValue={title}
+          initValue={title}
         />
         <Input
           context={FormContext}
           area
           name="shortContent"
           placeholder={shortContent}
-          initialValue={shortContent}
+          initValue={shortContent}
         />
         <Input
           context={FormContext}
           area
           name="fullContent"
           placeholder={fullContent}
-          initialValue={fullContent}
+          initValue={fullContent}
         />
         <Button type="submit" disabled={fetching}>
           Update post

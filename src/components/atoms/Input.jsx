@@ -49,8 +49,8 @@ const Input = ({ context, name, type, placeholder, area, initValue }) => {
   }
   return (
     <StyledInput
+      defaultValue={value}
       placeholder={placeholder}
-      value={value}
       name={name}
       type={type}
       onChange={e => setValue(e.target.value)}

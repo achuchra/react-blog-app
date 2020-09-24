@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { device } from 'data/device';
-import { ThemeProvider } from 'styled-components';
 import { theme } from 'themes/mainTheme';
 import Header from 'components/organisms/Header';
 import Footer from 'components/organisms/Footer';
@@ -57,7 +56,7 @@ const BasicTemplate = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleAddPostForm = () => {
-    setIsVisible(state => !isVisible);
+    setIsVisible(!isVisible);
   };
 
   return (

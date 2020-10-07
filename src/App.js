@@ -6,6 +6,7 @@ import BasicTemplate from 'templates/BasicTemplate';
 import Routing from 'routes/Routing';
 import { PopupProvider } from 'contexts/PopupContext';
 import PopupList from 'components/molecules/Popup';
+import { SnackbarProvider } from 'contexts/SnackbarContext';
 
 const App = () => {
   // useEffect(()=> {
@@ -16,12 +17,14 @@ const App = () => {
       <GlobalStyle />
       <UserProvider>
         <PopupProvider>
-          <Router>
-            <BasicTemplate>
-              <Routing />
-              <PopupList />
-            </BasicTemplate>
-          </Router>
+          <SnackbarProvider>
+            <Router>
+              <BasicTemplate>
+                <Routing />
+                <PopupList />
+              </BasicTemplate>
+            </Router>
+          </SnackbarProvider>
         </PopupProvider>
       </UserProvider>
     </>

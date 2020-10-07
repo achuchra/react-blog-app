@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FormProvider as DataForm, FormContext } from 'contexts/FormContext';
 import { http } from 'utils/httpClient';
 import loader from 'assets/svg/loader.svg';
 import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button';
 import Heading from 'components/atoms/Heading';
+import { SnackbarContext } from 'contexts/SnackbarContext';
 
 const EditPost = ({ match }) => {
-  const [fetching, setFetching] = useState(true);
+  const [fetching, setFetching] = useState(false);
   const [currentPostData, setCurrentPostData] = useState({});
+  const { title, shortContent, fullContent } = currentPostData;
+  const { triggerSnackbar } = useContext(SnackbarContext);
 
   useEffect(() => {
     const getCurrentPostData = async () => {
@@ -16,7 +19,6 @@ const EditPost = ({ match }) => {
         const res = await http.getPost(match.params.id);
         if (res) {
           setCurrentPostData(res);
-          setFetching(false);
         }
       } catch (err) {
         console.log(err);
@@ -28,22 +30,23 @@ const EditPost = ({ match }) => {
   }, []);
 
   const onSubmit = async inputs => {
+    setFetching(true);
     try {
       const res = await http.updatePost(currentPostData._id, inputs);
 
       if (res) {
         console.log(res);
+        setFetching(false);
+        triggerSnackbar('Pomyślnie zaktualizowano post! :)');
       }
     } catch (err) {
-      console.log(err);
+      triggerSnackbar('Wystąpił błąd! :(');
     }
   };
 
   if (fetching) {
     return <img src={loader} alt="loading" />;
   }
-
-  const { title, shortContent, fullContent } = currentPostData;
 
   return (
     <>
@@ -70,7 +73,7 @@ const EditPost = ({ match }) => {
           initValue={fullContent}
         />
         <Button type="submit" disabled={fetching}>
-          Update post
+          {fetching ? 'Saving...' : 'Update post'}
         </Button>
       </DataForm>
     </>

@@ -7,6 +7,7 @@ import Footer from 'components/organisms/Footer';
 import Button from 'components/atoms/Button';
 import { UserContext } from 'contexts/UserContext';
 import AddPostForm from 'components/molecules/AddPostForm';
+import Snackbar from 'components/atoms/Snackbar';
 
 const BasicTemplateStyles = styled.div`
   max-width: 350px;
@@ -41,7 +42,7 @@ export const AddButton = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: ${({ theme }) => theme.fontSize.l};
+  font-size: ${theme.fontSize.l};
   bottom: 25px;
   right: 25px;
   z-index: 10;
@@ -72,7 +73,7 @@ const BasicTemplate = ({ children }) => {
             />
           </>
         ) : null}
-
+        <Snackbar />
         <StyledContent>{children}</StyledContent>
         <Footer />
       </ThemeProvider>

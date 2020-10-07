@@ -70,12 +70,12 @@ const Settings = () => {
         <Input
           context={FormContext}
           name="name"
-          placeholder={userData.user.name}
+          initValue={userData.user.name}
         />
         <Input
           context={FormContext}
           name="surname"
-          placeholder={userData.user.surname}
+          initValue={userData.user.surname}
         />
         <Button type="submit">Update info</Button>
       </DataForm>

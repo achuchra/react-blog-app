@@ -7,6 +7,7 @@ import { FormProvider as DataForm, FormContext } from 'contexts/FormContext';
 import { UserContext } from 'contexts/UserContext';
 import { http } from 'utils/httpClient';
 import { device } from 'data/device';
+import { SnackbarContext } from 'contexts/SnackbarContext';
 
 const StyledWrapper = styled.div`
   position: fixed;
@@ -62,6 +63,7 @@ const CloseButton = styled(Button)`
 const AddPostForm = ({ isVisible, toggleClose }) => {
   const [fetching, setFetching] = useState('no-fetching');
   const { userData } = useContext(UserContext);
+  const { triggerSnackbar } = useContext(SnackbarContext);
 
   const onSubmit = async inputs => {
     setFetching('fetching');
@@ -70,9 +72,11 @@ const AddPostForm = ({ isVisible, toggleClose }) => {
       if (res) {
         setFetching('fetched');
         toggleClose();
+        triggerSnackbar('Pomyślnie dodano post! :)');
       }
     } catch (err) {
       setFetching('error');
+      triggerSnackbar('Wystąpił błąd :(');
     }
   };
 

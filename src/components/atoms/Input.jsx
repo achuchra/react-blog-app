@@ -29,7 +29,7 @@ export const StyledTextArea = styled.textarea`
   max-width: 100%;
 `;
 
-const Input = ({ context, name, type, placeholder, area, initValue }) => {
+const Input = ({ context, name, type, placeholder, area, initValue = '' }) => {
   const { setInputsValue } = useContext(context);
   const [value, setValue] = useState(initValue || '');
 
@@ -40,7 +40,7 @@ const Input = ({ context, name, type, placeholder, area, initValue }) => {
   if (area) {
     return (
       <StyledTextArea
-        defaultValue={value}
+        defaultValue={initValue}
         placeholder={placeholder}
         onChange={e => setValue(e.target.value)}
         name={name}
@@ -49,7 +49,7 @@ const Input = ({ context, name, type, placeholder, area, initValue }) => {
   }
   return (
     <StyledInput
-      defaultValue={value}
+      defaultValue={initValue}
       placeholder={placeholder}
       name={name}
       type={type}

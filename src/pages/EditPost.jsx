@@ -35,8 +35,8 @@ const EditPost = ({ match }) => {
       const res = await http.updatePost(currentPostData._id, inputs);
 
       if (res) {
-        console.log(res);
         setFetching(false);
+        setCurrentPostData(res);
         triggerSnackbar('Pomyślnie zaktualizowano post! :)');
       }
     } catch (err) {
@@ -52,24 +52,17 @@ const EditPost = ({ match }) => {
     <>
       <Heading>Edit post</Heading>
       <DataForm onSubmit={onSubmit}>
-        <Input
-          context={FormContext}
-          name="title"
-          placeholder={title}
-          initValue={title}
-        />
+        <Input context={FormContext} name="title" initValue={title} />
         <Input
           context={FormContext}
           area
           name="shortContent"
-          placeholder={shortContent}
           initValue={shortContent}
         />
         <Input
           context={FormContext}
           area
           name="fullContent"
-          placeholder={fullContent}
           initValue={fullContent}
         />
         <Button type="submit" disabled={fetching}>

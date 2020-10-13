@@ -7,6 +7,7 @@ import { PopupContext } from 'contexts/PopupContext';
 import { FormProvider as DataForm, FormContext } from 'contexts/FormContext';
 import Input from 'components/atoms/Input';
 import Heading from 'components/atoms/Heading';
+import { SnackbarContext } from 'contexts/SnackbarContext';
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -18,12 +19,14 @@ const FlexWrapper = styled.div`
 const Settings = () => {
   const { userData, setUserData } = useContext(UserContext);
   const { addPopup } = useContext(PopupContext);
+  const { triggerSnackbar } = useContext(SnackbarContext);
 
   const onSubmit = async inputs => {
     try {
       const res = await http.userUpdate(userData.user.id, inputs);
       if (res) {
         const { _id, username, name, surname } = res;
+        triggerSnackbar('Pomyślnie zaktualizowano dane! :)');
         setUserData(state => ({
           ...state,
           user: {
@@ -33,10 +36,9 @@ const Settings = () => {
             surname,
           },
         }));
-        console.log(res);
       }
     } catch (err) {
-      console.log(err);
+      triggerSnackbar('Wystąpił błąd! :(');
     }
   };
 
@@ -54,8 +56,6 @@ const Settings = () => {
       addPopup('Something went wrong.');
     }
   };
-
-  console.log(userData);
 
   return (
     <>

@@ -32,6 +32,11 @@ const StyledPost = styled.div`
 const DashboardPost = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 3px 15px;
+  border-bottom: 1px solid #fafafa;
+  border-radius: 5px;
+  transition: box-shadow 0.1s ease-in-out;
 
   div {
     display: flex;
@@ -39,9 +44,23 @@ const DashboardPost = styled.div`
     a {
       display: block;
       width: 24px;
+      margin-right: 15px;
     }
   }
-`
+
+  a,
+  img {
+    transition: transform 0.1s ease-in-out;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  &:hover {
+    box-shadow: 0px 3px 15px -10px #000;
+  }
+`;
 
 const Post = ({
   id,
@@ -51,6 +70,7 @@ const Post = ({
   fullContent,
   preview,
   dashboard,
+  onDelete = '',
 }) => {
   if (dashboard) {
     return (
@@ -58,9 +78,11 @@ const Post = ({
         <span>{title}</span>
         <div>
           <Link to={`/edit/${id}`}>
-            <img src={pencil} alt='edit' />
+            <img src={pencil} alt="edit" />
           </Link>
-          <img src={dustbin} alt='delete' />
+          <a href="#" type="button" onClick={e => onDelete(id, e)}>
+            <img src={dustbin} alt="delete" />
+          </a>
         </div>
       </DashboardPost>
     );
